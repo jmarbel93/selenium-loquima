@@ -29,4 +29,3 @@ def test_amazon_music(driver):
 
     assert config.get("MUSIC_URL") in current_path, f"Expected {config.get('MUSIC_URL')}, but was on {driver.current_url}"
     assert amazon_music.is_at_music_page(), "Amazon Music page is not visible/displayed"
-    
