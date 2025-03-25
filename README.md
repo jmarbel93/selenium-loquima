@@ -29,3 +29,24 @@
     pip list
     ```
     (Check that "pytest" and "selenium" appear in the list of installed packages)
+
+## Running Tests
+To execute the test suite, use the following command:
+   ```bash
+   pytest tests/
+   ```
+
+For more detailed output, run:
+   ```bash
+   pytest -v
+   ```
+
+To run a specific test file:
+   ```bash
+   pytest tests/test_amazon_music.py
+   ```
+
+To stop execution on the first failure:
+   ```bash
+   pytest -x
+   ```

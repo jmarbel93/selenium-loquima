@@ -7,5 +7,3 @@ class Header:
 
     def click_music(self):
         self.driver.find_element(*self.music_link).click()
-
-

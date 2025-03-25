@@ -5,10 +5,5 @@ class AmazonMusic:
         self.driver = driver
         self.music_logo = (By.ID, "navbarMusicLogo")
 
-    def is_at_music_page(self):
+    def is_visible(self):
         return len(self.driver.find_elements(*self.music_logo)) > 0
-
-
-
-
-

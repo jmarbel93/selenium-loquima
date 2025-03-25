@@ -1,8 +1,11 @@
 import pytest
+import json
 from selenium import webdriver
 from pages.header import Header
 from pages.amazon_music import AmazonMusic
-from config import Config
+
+with open("config.json", "r") as file:
+    config = json.load(file)
 
 @pytest.fixture
 def driver():
@@ -12,7 +15,7 @@ def driver():
     driver.quit()
 
 def test_amazon_music(driver):
-    driver.get(Config.BASE_URL)
+    driver.get(config.get("BASE_URL"))
 
     header = Header(driver)
     header.click_music()
@@ -22,10 +25,8 @@ def test_amazon_music(driver):
     print("Page title:", driver.title)
     print("URL:", driver.current_url)
 
-    assert Config.MUSIC_URL in driver.current_url, f"Expected {Config.MUSIC_URL}, but was on {driver.current_url}"
-    assert amazon_music.is_at_music_page(), "Amazon Music logo not found"
+    current_path = driver.current_url.replace(config.get("BASE_URL").rstrip("/"), "")
 
-
-
-
-
+    assert config.get("MUSIC_URL") in current_path, f"Expected {config.get('MUSIC_URL')}, but was on {driver.current_url}"
+    assert amazon_music.is_at_music_page(), "Amazon Music page is not visible/displayed"
+    
