@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
+from base_page import BasePage
 
-class Header:
+class Header(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         self.music_link = (By.ID, "music")
-
+    
     def click_music(self):
-        self.driver.find_element(*self.music_link).click()
+        self.click(self.music_link)
