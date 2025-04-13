@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from base_page import BasePage
+from pages.base_page import BasePage
 
 class Search(BasePage):
     def __init__(self, driver):
@@ -8,5 +8,5 @@ class Search(BasePage):
         self.search_button = (By.ID, "nav-search-submit-button")
     
     def search(self, query):
-        self.wait_for_element(self.search_box).send_keys(query)
-        self.wait_for_element(self.search_button).click()
+        BasePage.wait_for_element(self.search_box).send_keys(query)
+        BasePage.wait_for_element(self.search_button).click()
