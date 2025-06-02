@@ -8,5 +8,5 @@ class Search(BasePage):
         self.search_button = (By.ID, "nav-search-submit-button")
     
     def search(self, query):
-        BasePage.wait_for_element(self.search_box).send_keys(query)
-        BasePage.wait_for_element(self.search_button).click()
+        self.wait_for_element(self.search_box).send_keys(query)
+        self.wait_for_element(self.search_button).click()
