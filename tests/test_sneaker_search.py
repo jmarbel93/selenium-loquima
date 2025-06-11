@@ -15,7 +15,6 @@ product = config.get("Preferences", "PRODUCT")
 @pytest.fixture
 def driver():
     browser = config.get("Preferences", "BROWSER").lower()
-
     if browser == "chrome":
         driver = webdriver.Chrome()
     elif browser == "firefox":
