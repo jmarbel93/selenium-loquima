@@ -8,23 +8,6 @@ from pages.amazon_music import AmazonMusic
 config = configparser.ConfigParser()
 config.read('config.conf')
 
-@pytest.fixture
-def driver():
-    browser = config.get("Preferences", "BROWSER").lower()
-
-    if browser == "chrome":
-        driver = webdriver.Chrome()
-    elif browser == "firefox":
-        driver = webdriver.Firefox()
-    elif browser == "edge":
-        driver = webdriver.Edge()
-    else:
-        raise ValueError(f"Browser is not supported: {browser}")
-
-    driver.maximize_window()  
-    yield driver 
-    driver.quit() 
-
 def test_amazon_music(driver):
     driver.get(config.get("Preferences", "BASE_PAGE"))
 
