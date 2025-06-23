@@ -12,22 +12,6 @@ brand = config.get("Preferences", "BRAND").upper()
 base_url = config.get("Preferences", "BASE_PAGE")
 product = config.get("Preferences", "PRODUCT")
 
-@pytest.fixture
-def driver():
-    browser = config.get("Preferences", "BROWSER").lower()
-    if browser == "chrome":
-        driver = webdriver.Chrome()
-    elif browser == "firefox":
-        driver = webdriver.Firefox()
-    elif browser == "edge":
-        driver = webdriver.Edge()
-    else:
-        raise ValueError(f"Browser is not supported: {browser}")
-
-    driver.maximize_window()
-    yield driver
-    driver.quit()
-
 def test_search_puma_sorted(driver):
     driver.get(base_url)
 
