@@ -8,9 +8,9 @@ from pages.results import Results
 
 config = configparser.ConfigParser()
 config.read('config.conf')
-brand = config.get("Preferences", "BRAND").upper()
+brand = "puma"
 base_url = config.get("Preferences", "BASE_PAGE")
-product = config.get("Preferences", "PRODUCT")
+product = "zapatillas"
 
 def test_search_puma_sorted(driver):
     driver.get(base_url)
